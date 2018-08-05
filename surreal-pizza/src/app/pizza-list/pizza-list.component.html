@@ -1,0 +1,25 @@
+<div>
+  <h1>Pizza List</h1>
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th>Name</th>
+        <th>Short Description</th>
+        <!-- <th>Long Description</th> -->
+        <th>Price</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let pizza of pizzaList">
+        <td>{{ pizza.name }}</td>
+        <td>{{ pizza.shortDescription }}</td>
+        <!-- <td>{{ pizza.longDescription }}</td> -->
+        <td>{{ pizza.price }}</td>
+        <td><a [routerLink]="['/detail', pizza.id]">Details</a></td>
+        <td><button type="button" (click)="pizzaSelected(pizza)">Select</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

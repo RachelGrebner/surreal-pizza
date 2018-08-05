@@ -1,0 +1,57 @@
+<div class="col-sm-6" *ngIf="detailForm">
+  <h1>Pizza Detail</h1>
+      
+    <form [formGroup]="detailForm" (ngSubmit)="onSubmit(detailForm.value)">
+      <!--<img [src]="'./assets/images/' + pizza.pictureUrl"/>-->
+      <div class="form-group">
+        <label>Id</label>
+        <input type="text" name="id" class="form-control" readonly formControlName="id"/>
+      </div>
+      <div class="form-group">
+        <label>Name</label>
+        <input type="text" name="name" class="form-control" formControlName="name"/>
+        <div class="text-danger" *ngIf="detailForm.controls['name'].invalid && (detailForm.controls['name'].dirty || detailForm.controls['name'].touched)">
+        You must provide a name.
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Short Description</label>
+        <input type="text" name="description" class="form-control" formControlName="shortDescription"/>
+         <div class="text-danger" *ngIf="detailForm.controls['shortDescription'].invalid && (detailForm.controls['shortDescription'].dirty || detailForm.controls['shortDescription'].touched)">
+        You must provide a short description.
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Price</label>
+        <input type="text" name="price" class="form-control" formControlName="price"/>
+        <div class="text-danger" *ngIf="detailForm.controls['price'].invalid && (detailForm.controls['price'].dirty || detailForm.controls['peice'].touched)">
+        <span *ngIf="detailForm.controls['price'].errors.required">
+          You must provide a price.
+        </span>
+        <span *ngIf="detailForm.controls['price'].errors.invalidPrice">
+            Price must be a valid float.
+        </span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Long Description</label>
+        <input type="text" name="description" class="form-control" formControlName="longDescription"/>
+         <div class="text-danger" *ngIf="detailForm.controls['longDescription'].invalid && (detailForm.controls['longDescription'].dirty || detailForm.controls['longDescription'].touched)">
+        You must provide a long description.
+        </div>
+      </div>
+
+     
+      <div class="text-center">
+        <button type="submit" class="btn mr-4"
+      [class.btn-default]="detailForm.invalid"
+      [class.btn-success]="detailForm.valid"
+      [disabled]="detailForm.invalid"
+      >
+        Update Pizza
+      </button>
+        <button type="button" class="btn btn-info" (click)="goBack()">Back</button>
+      </div>
+    </form>
+
+  </div>
